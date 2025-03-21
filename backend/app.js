@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 import connectDb from "./db/connectDb.js"
-import  authRoutes from "./routes/authRoutes.js"
+import  authRoutes from "./Routes/authRoutes.js"
 const app = express()
 
 const frontend_url =  process.env.FRONTEND_URL

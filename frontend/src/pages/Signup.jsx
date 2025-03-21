@@ -33,7 +33,7 @@ const Signup = () => {
     
   return (
     <>
-      <div className="h-screen      border-2 border-red-500  ">
+      <div className="h-screen  ">
         <div className="h-full w-[80%] bg-gray-200   m-auto px-5  py-9   ">
           <h1 className="text-2xl  font-semibold ">
             Create your <br />

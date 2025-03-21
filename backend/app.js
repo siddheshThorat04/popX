@@ -7,7 +7,7 @@ import connectDb from "./db/connectDb.js"
 import  authRoutes from "./routes/authRoutes.js"
 const app = express()
 
-const frontend_url = process.env.MODE === "DEVELOPMENT" ? "http://localhost:5173" : process.env.FRONTEND_URL
+const frontend_url =  process.env.FRONTEND_URL
 
 app.use(express.json())
 app.use(cors({

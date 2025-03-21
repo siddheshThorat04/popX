@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-
+import axios from "axios";
 const Signup = () => {
     const [formData, setFormData] = useState({
         fullName: "",
@@ -19,6 +19,16 @@ const Signup = () => {
       const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem("popxAuth", JSON.stringify(formData));
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, formData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((res) => {
+          console.log(res.data);
+          window.location.href = "/profile";
+        }).catch((err) => {
+          console.log(err);
+        });
       };
     
   return (
@@ -31,29 +41,20 @@ const Signup = () => {
           </h1>
 
           <form   onSubmit={handleSubmit} >
-            <div className="  mt-3   border-[1px] h-fit border-black  ">
-              {/* <label
-                htmlFor="fullName"
-                className="border bg-gray-200  absolute left-16   text-purple-700 text-sm  font-semibold   " 
-              >
-                Full Name<span className="text-red-600"  >*</span>
-              </label> */}
-              <h1 className=" fixed bg-gray-200   "  >full name</h1>
+            <div className="  mt-3     ">
+              <h1 className=" fixed bg-gray-200   text-purple-700 text-sm  font-semibold    "  ><span className="text-red-600" >&nbsp;</span>full name <span  className="text-red-600" >*</span> </h1>
               <input
                 type="text"
                 className="bg-transparent p-1 border-[1px] border-opacity-50  w-full  outline-none  border-black  rounded-sm  mt-3 "
                 name="fullName"
               value={formData.fullName}
               onChange={handleChange}
+              required
               />
             </div>
             <div className=" mt-3  ">
-              <label
-                htmlFor="PhoneNum"
-                className="border bg-gray-200  absolute left-16     text-purple-700 text-sm  font-semibold   " 
-              >
-                Phone Number<span className="text-red-600"  >*</span>
-              </label>
+            <h1 className=" fixed bg-gray-200   text-purple-700 text-sm  font-semibold    "  ><span className="text-red-600" >&nbsp;</span>Phone number<span  className="text-red-600" >*</span> </h1>
+              
               <input
                 type="number"
                 maxLength={'10'}
@@ -61,52 +62,44 @@ const Signup = () => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
+                required
                 
               />
             </div>
             <div className=" mt-3  ">
-              <label
-                htmlFor="email;"
-                className="border bg-gray-200  absolute left-16     text-purple-700 text-sm  font-semibold   " 
-              >
-                Email address<span className="text-red-600"  >*</span>
-              </label>
+            <h1 className=" fixed bg-gray-200   text-purple-700 text-sm  font-semibold    "  ><span className="text-red-600" >&nbsp;</span>Email address<span  className="text-red-600" >*</span> </h1>
+              
               <input
                 type="email"
                 className="bg-transparent p-2 border-[1px] border-opacity-50  w-full   outline-none  border-black  rounded-sm  mt-3 "
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className=" mt-3  ">
-              <label
-                htmlFor="password"
-                className="border bg-gray-200  absolute left-16     text-purple-700 text-sm  font-semibold   " 
-              >
-                Password<span className="text-red-600"  >*</span>
-              </label>
+            <h1 className=" fixed bg-gray-200   text-purple-700 text-sm  font-semibold    "  ><span className="text-red-600" >&nbsp;</span>password<span  className="text-red-600" >*</span> </h1>
+              
               <input
                 type="password"
                 className="bg-transparent p-2 border-[1px] border-opacity-50  w-full   outline-none  border-black  rounded-sm  mt-3 "
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className=" mt-3  ">
-              <label
-                htmlFor="companyName"
-                className="border bg-gray-200  absolute left-16     text-purple-700 text-sm  font-semibold   " 
-              >
-                Company Name<span className="text-red-600"  >*</span>
-              </label>
+            <h1 className=" fixed bg-gray-200   text-purple-700 text-sm  font-semibold    "  ><span className="text-red-600" >&nbsp;</span>Company name <span  className="text-red-600" >*</span> </h1>
+              
               <input
                 type="text"
                 className="bg-transparent p-2 border-[1px] border-opacity-50  w-full   outline-none  border-black  rounded-sm  mt-3 "
                 name="companyName"
                 value={formData.companyName}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="mb-4">
@@ -136,7 +129,7 @@ const Signup = () => {
                   name="agency"
                   value="No"
                   checked={formData.agency === "No"}
-                  onChange={handleChange}
+                  onChange={handleChange} 
                   className="hidden peer"
                 />
                 <div className="w-5 h-5 border-2 border-gray-400 rounded-full flex items-center justify-center peer-checked:bg-purple-500">

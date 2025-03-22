@@ -25,13 +25,8 @@ const Signup = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }).then((res) => {
-          console.log(res.data);
-          setIsLoading(false);
-          window.location.href = "/profile";
-        }).catch((err) => {
-          console.log(err);
-        });
+        })
+        window.location.href = "/login";
       };
     
   return (

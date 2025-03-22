@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios";
 const Signup = () => {
+  const [isLoading, setIsLoading] = useState(false);  
     const [formData, setFormData] = useState({
         fullName: "",
         phoneNumber: "",
@@ -18,6 +19,7 @@ const Signup = () => {
       };
       const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         localStorage.setItem("popxAuth", JSON.stringify(formData));
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, formData, {
           headers: {
@@ -25,6 +27,7 @@ const Signup = () => {
           },
         }).then((res) => {
           console.log(res.data);
+          setIsLoading(false);
           window.location.href = "/profile";
         }).catch((err) => {
           console.log(err);
@@ -141,9 +144,10 @@ const Signup = () => {
             </div>
             <button
             type="submit"
-            className="w-full p-3 mt-4 bg-purple-500 text-white font-semibold rounded-md hover:bg-purple-600 transition"
-          >
-            Sign Up
+            className="w-full p-3 mt-4 bg-[#661EFF] text-white font-semibold  fixed bottom-10  w-[70%] left-[15%] rounded-md hover:bg-purple-600 transition"
+          > 
+          {isLoading ? "..." : "Create Account"}
+            
           </button>
           </div>
           </form>

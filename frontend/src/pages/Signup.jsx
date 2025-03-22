@@ -26,7 +26,7 @@ const Signup = () => {
             "Content-Type": "application/json",
           },
         })
-        window.location.href = "/login";
+        window.location.href = "/profile";
       };
     
   return (

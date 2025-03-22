@@ -144,7 +144,7 @@ const Signup = () => {
             </div>
             <button
             type="submit"
-            className="w-full p-3 mt-4 bg-[#661EFF] text-white font-semibold  fixed bottom-10  w-[70%] left-[15%] rounded-md hover:bg-purple-600 transition"
+            className="w-full p-3  bg-[#661EFF] text-white font-semibold   w-[80%]   mt-20  rounded-md hover:bg-purple-600 transition"
           > 
           {isLoading ? "..." : "Create Account"}
             
